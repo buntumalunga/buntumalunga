@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/06/02/13/20260602130811-OT335DE8.js" defer></script>
+    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Portfolio | Buntubethu Sydney Malunga</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #253850;      /* Deep Slate Blue */
+  --accent: #e24c2c;       /* Terracotta Red/Orange */
+  --bg: #f7f4eb;           /* Warm Eggshell Cream */
+  --card-bg: #ffffff;      /* Pure White */
+  --text-dark: #1b2a41;    /* Slate Dark Blue */
+  --text-muted: #53627c;   /* Soft Cool Grey */
+  --border: #e9e5da;       /* Warm subtle border */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-dark);
+  line-height: 1.7;
+  padding-bottom: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Abstract background elements */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(226, 76, 44, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(37, 56, 80, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.avatar-container {
+  position: relative;
+  margin-bottom: 30px;
+  z-index: 1;
+}
+
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary);
+  box-shadow: 0 10px 25px rgba(37, 56, 80, 0.15);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.avatar:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-transform: lowercase;
+  color: var(--primary);
+  letter-spacing: -1px;
+  z-index: 1;
+}
+
+.hero p {
+  color: var(--accent);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  z-index: 1;
+}
+
+/* Sticky Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 20px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: rgba(247, 244, 235, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(37, 56, 80, 0.03);
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+  position: relative;
+  transition: color 0.3s ease;
+  padding: 5px 0;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Section Styling */
+.section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 100px 24px;
+}
+
+.section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 50px;
+  text-transform: lowercase;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.section h2::after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* About Layout */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.about-img-container {
+  position: relative;
+}
+
+.about-img {
+  height: 450px;
+  width: 100%;
+  border-radius: 12px;
+  background: url('https://github.com/buntumalunga/graph-ai-portfolio/blob/main/1652783415301.jpg?raw=true') center/cover no-repeat;
+  box-shadow: 0 20px 40px rgba(37, 56, 80, 0.12);
+}
+
+/* Elegant border decorative card behind the image */
+.about-img-container::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: -20px;
+  right: 20px;
+  bottom: -20px;
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  z-index: -1;
+}
+
+.about-text p {
+  margin-bottom: 20px;
+  color: var(--text-dark);
+  font-size: 1.05rem;
+}
+
+.about-text strong {
+  color: var(--primary);
+}
+
+/* Badge/Tag container */
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.tag {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: lowercase;
+  box-shadow: 0 2px 5px rgba(37, 56, 80, 0.02);
+}
+
+.tag.highlight {
+  background: var(--primary);
+  color: var(--bg);
+  border-color: var(--primary);
+}
+
+/* Course Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 40px 30px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(37, 56, 80, 0.02);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--primary);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(37, 56, 80, 0.06);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card h3 {
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  text-transform: lowercase;
+  color: var(--primary);
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.card ul {
+  padding-left: 20px;
+}
+
+.card li {
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  list-style-type: square;
+}
+
+/* Submissions Section & Timeline Layout */
+.sub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.sub {
+  background: var(--card-bg);
+  padding: 40px 30px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(37, 56, 80, 0.02);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.sub::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(226, 76, 44, 0.1);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* Style active workshops differently */
+.sub.active {
+  border-color: rgba(226, 76, 44, 0.3);
+  box-shadow: 0 10px 30px rgba(226, 76, 44, 0.04);
+}
+
+.sub.active::after {
+  content: 'completed';
+}
+
+.sub.upcoming::after {
+  content: 'planned';
+  background: rgba(37, 56, 80, 0.08);
+  color: var(--primary);
+}
+
+.sub.active:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px rgba(226, 76, 44, 0.08);
+}
+
+.sub-header {
+  margin-bottom: 15px;
+}
+
+.sub h3 {
+  margin-bottom: 8px;
+  color: var(--primary);
+  text-transform: lowercase;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.sub-meta {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.sub p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+}
+
+.link-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--bg);
+  background: var(--primary);
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  width: fit-content;
+  border: 1px solid var(--primary);
+}
+
+.project-link:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 5px 15px rgba(226, 76, 44, 0.3);
+}
+
+.upcoming-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.upcoming-placeholder::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--text-muted);
+  border-radius: 50%;
+}
+
+/* Consultation Section Styling */
+.form-container {
+  display: flex;
+  justify-content: center;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(37, 56, 80, 0.02);
+  overflow: hidden;
+}
+
+.form-container iframe {
+  max-width: 100%;
+}
+
+/* Footer styling */
+footer {
+  background: var(--primary);
+  color: var(--bg);
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 0.85rem;
+  margin-top: 100px;
+}
+
+footer p {
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.social-links a {
+  color: var(--bg);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: all 0.3s;
+  font-size: 0.8rem;
+  text-transform: lowercase;
+}
+
+.social-links a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* Responsive adjustments */
+@media(max-width:900px){
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .about-img {
+    height: 350px;
+  }
+  
+  .hero h1 {
+    font-size: 2.6rem;
+  }
+}
+
+@media(max-width:600px){
+  nav {
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 15px;
+  }
+  
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .section {
+    padding: 60px 20px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="avatar-container">
+    <img src="https://github.com/buntumalunga/graph-ai-portfolio/blob/main/1652783415301.jpg?raw=true" alt="Buntubethu Sydney Malunga" class="avatar" onerror="this.src='https://api.dicebear.com/7.x/adventurer/svg?seed=Buntu'">
+  </div>
+  <h1>buntubethu sydney malunga</h1>
+  <p>generative ai • public health data analyst • culinary nutritionist</p>
+</section>
+
+<nav>
+  <a href="#about">about</a>
+  <a href="#course">course</a>
+  <a href="#submissions">submissions</a>
+  <a href="#consultation">contact for consultation</a>
+</nav>
+
+<section id="about" class="section">
+  <h2>about</h2>
+  <div class="about-grid">
+    <div class="about-img-container">
+      <div class="about-img"></div>
+    </div>
+    <div class="about-text">
+      <p>
+        I am a <strong>Clinical Research Assistant</strong> at the Newlands Clinic in Harare and a <strong>Professional Cook</strong> specialized in Culinary Nutrition. My work is situated at the intersection of biochemistry, public health, and culinary arts.
+      </p>
+      <p>
+        Holding a <strong>BSc Honours in Biochemistry</strong> from the University of Zimbabwe and a <strong>Culinary Nutrition Professional Diploma</strong> (Distinction) from the British Academy of Culinary Nutrition, I develop practical, evidence-based methods for sustainable dietary changes.
+      </p>
+      <p>
+        Currently, I analyze NCDs in HIV-positive cohorts, build R-driven workflows, and run <em>408°F | The Kitchen Lab</em>, exploring the limits of flavor, modern nutrition, and health.
+      </p>
+      <div class="tag-container">
+        <span class="tag highlight">r programming</span>
+        <span class="tag">biostatistics</span>
+        <span class="tag">redcap</span>
+        <span class="tag">clinical trials</span>
+        <span class="tag highlight">generative ai</span>
+        <span class="tag">culinary medicine</span>
+        <span class="tag">biochemistry</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="course" class="section">
+  <h2>course</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3>overview</h3>
+      <p>
+        Participating in the 8-week intensive course <strong>Generative AI for Work & Research</strong> by The GRAPH Network.
+      </p>
+      <p>
+        This professional cohort program explores no-code AI tooling, LLM engineering, and automated workflows designed to accelerate scientific communication and clinical data processing ethically.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>learning</h3>
+      <ul>
+        <li>LLM architectures & document synthesis</li>
+        <li>AI data pipelines (Julius, Code Interpreter)</li>
+        <li>Automated literature monitoring</li>
+        <li>RAG chatbots & workflow agents</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>outputs</h3>
+      <ul>
+        <li>Web-based interactive project pages</li>
+        <li>Automated global data reports</li>
+        <li>Custom research assistants & GPTs</li>
+        <li>Synthesized capstone showcase</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="submissions" class="section">
+  <h2>submissions</h2>
+  <div class="sub-grid">
+
+    <div class="sub active">
+      <div class="sub-header">
+        <span class="sub-meta">week 1 • workshop 1</span>
+        <h3>portfolio website</h3>
+      </div>
+      <p>
+        Designing and launching this responsive professional AI portfolio website using HTML, CSS, and modern web design principles to showcase course milestones.
+      </p>
+      <a 
+        class="project-link"
+        href="#"
+      >
+        view website
+      </a>
+    </div>
+
+    <div class="sub active">
+      <div class="sub-header">
+        <span class="sub-meta">week 2 • workshop 2</span>
+        <h3>automated data analysis</h3>
+      </div>
+      <p>
+        Statistical analysis of Gapminder demographics, exploring global development metrics and life expectancy indices using automated AI tools.
+      </p>
+      <a 
+        class="project-link"
+        href="https://buntumalunga.github.io/graph-ai-portfolio/buntuworkshop2.html"
+        target="_blank"
+      >
+        view project
+      </a>
+    </div>
+
+    <div class="sub active">
+      <div class="sub-header">
+        <span class="sub-meta">week 3 • workshop 3</span>
+        <h3>job market data analysis</h3>
+      </div>
+      <p>
+        Utilized Large Language Models (LLMs) embedded in Google Sheets to parse, clean, and structure unstructured job postings, then conducted descriptive analysis of salaries, languages, and requirements.
+      </p>
+      <a 
+        class="project-link"
+        href="https://buntumalunga.github.io/graph-ai-portfolio/buntuworkshop3.html"
+        target="_blank"
+      >
+        view project
+      </a>
+    </div>
+
+    <div class="sub active">
+      <div class="sub-header">
+        <span class="sub-meta">week 4</span>
+        <h3>literature reviews & synthesis</h3>
+      </div>
+      <p>
+        Building automated workflows for literature collection, knowledge mapping, and text-mining with Elicit, semantic tools, and custom prompt loops. This milestone was successfully demonstrated at the conclusion of the week 3 session.
+      </p>
+    </div>
+
+    <div class="sub active">
+      <div class="sub-header">
+        <span class="sub-meta">week 5</span>
+        <h3>custom gpts & chatbots</h3>
+      </div>
+      <p>
+        Configuring Retrieval-Augmented Generation (RAG) platforms to index research libraries, assisting clinicians in navigating nutritional guidelines. The resulting deployment has been integrated directly into this portfolio site.
+      </p>
+    </div>
+
+    <div class="sub active">
+      <div class="sub-header">
+        <span class="sub-meta">week 6</span>
+        <h3>task automation & agents</h3>
+      </div>
+      <p>
+        Orchestrated an automated workflow that processes consultation form submissions, conducts deep research on the client's company, and autonomously generates a professional GenAI opportunities report.
+      </p>
+      <a 
+        class="project-link"
+        href="https://buntumalunga.github.io/graph-ai-portfolio/GenAI%20Opportunities%20-%20Newlands%20Clinic%2C%20Harare.html"
+        target="_blank"
+      >
+        view report
+      </a>
+    </div>
+
+    <div class="sub active">
+      <div class="sub-header">
+        <span class="sub-meta">week 7</span>
+        <h3>genai for communication</h3>
+      </div>
+      <p>
+        Deployed generative solutions to format research summaries, visuals, and abstracts into accessible public health narratives. Created a promotional course showcase flyer using Gemini for initial asset generation and Canva for final adjustments.
+      </p>
+      <div class="link-group">
+        <a 
+          class="project-link"
+          href="https://buntumalunga.github.io/graph-ai-portfolio/buntu_claude_abstract.pdf"
+          target="_blank"
+        >
+          view abstract (pdf)
+        </a>
+        <a 
+          class="project-link"
+          href="https://buntumalunga.github.io/graph-ai-portfolio/buntu_ai_showcase.png"
+          target="_blank"
+        >
+          view flyer (png)
+        </a>
+      </div>
+    </div>
+
+    <div class="sub upcoming">
+      <div class="sub-header">
+        <span class="sub-meta">week 8</span>
+        <h3>capstone project & showcase</h3>
+      </div>
+      <p>
+        A final synthesized solution blending clinical nutrition research with data automation and deployment.
+      </p>
+      <span class="upcoming-placeholder">coming soon</span>
+    </div>
+
+  </div>
+</section>
+
+<section id="consultation" class="section">
+  <h2>contact for consultation</h2>
+  <div class="form-container">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScxPPXR8Mk8EAZ-RH3s6cZ27pIXfvnvlwB3RTakwfb9PkoZOw/viewform?embedded=true" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 buntubethu sydney malunga • all rights reserved</p>
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/buntubethu-malunga-088300235" target="_blank">linkedin</a>
+    <a href="https://www.instagram.com/fourzero8_/" target="_blank">instagram (kitchen lab)</a>
+    <a href="https://github.com/buntumalunga" target="_blank">github</a>
+  </div>
+</footer>
+
+</body>
+</html>
