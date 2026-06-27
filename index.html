@@ -56,6 +56,7 @@
         /* Custom Scrollbar styling matches your branding colors */
         ::-webkit-scrollbar {
             width: 8px;
+            height: 8px;
         }
         ::-webkit-scrollbar-track {
             background: var(--bg);
@@ -96,6 +97,15 @@
         h1, h2, h3, h4, .lowercase-tag {
             text-transform: lowercase;
         }
+
+        /* Slider Animations */
+        .slider-container {
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+        }
+        .slider-container::-webkit-scrollbar {
+            display: none; /* Safari/Chrome */
+        }
     </style>
 </head>
 
@@ -112,14 +122,14 @@
         <div class="absolute w-[320px] h-[320px] border border-dotted border-primary/25 rounded-full animate-[spin_80s_linear_infinite] pointer-events-none z-0"></div>
 
         <div class="relative z-10 max-w-3xl flex flex-col items-center">
-            <!-- Animated circular avatar -->
+            <!-- Animated circular avatar featuring requested image -->
             <div class="relative mb-8 group cursor-pointer">
                 <div class="absolute inset-0 bg-accent rounded-full blur-md opacity-25 scale-95 group-hover:scale-105 transition-all duration-500"></div>
-                <div class="relative w-44 h-44 rounded-full overflow-hidden border-4 border-primary shadow-xl group-hover:rotate-3 group-hover:scale-105 transition-all duration-500">
+                <div class="relative w-44 h-44 rounded-full overflow-hidden border-4 border-primary shadow-xl group-hover:rotate-3 group-hover:scale-105 transition-all duration-500 bg-white flex items-center justify-center p-2">
                     <img 
-                        src="https://github.com/buntumalunga/buntumalunga/blob/main/BM-07.PNG" 
-                        alt="buntubethu sydney malunga" 
-                        class="w-full h-full object-cover" 
+                        src="https://github.com/buntumalunga/buntumalunga/raw/main/3A8F4664-FCC1-40DF-8375-2241CAFA222C-removebg-preview.PNG" 
+                        alt="Buntu Malunga" 
+                        class="w-full h-full object-contain" 
                         onerror="this.src='https://api.dicebear.com/7.x/adventurer/svg?seed=Buntu'"
                     />
                 </div>
@@ -160,10 +170,12 @@
                 408°f
             </a>
             
-            <!-- Desktop Links -->
+            <!-- Desktop Links (Updated to reflect Meal Prep & renamed sections) -->
             <div class="hidden md:flex space-x-8">
                 <a href="#about" class="text-sm font-semibold text-primary hover:text-accent relative py-2 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent hover:after:w-full after:transition-all after:duration-300 lowercase">about</a>
-                <a href="#kitchen-lab" class="text-sm font-semibold text-primary hover:text-accent relative py-2 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent hover:after:w-full after:transition-all after:duration-300 lowercase">kitchen lab</a>
+                <a href="#meal-prep" class="text-sm font-semibold text-primary hover:text-accent relative py-2 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent hover:after:w-full after:transition-all after:duration-300 lowercase">meal plan & prep</a>
+                <a href="#recipes" class="text-sm font-semibold text-primary hover:text-accent relative py-2 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent hover:after:w-full after:transition-all after:duration-300 lowercase">recipes & cooking tips</a>
+                <a href="#newsletters" class="text-sm font-semibold text-primary hover:text-accent relative py-2 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent hover:after:w-full after:transition-all after:duration-300 lowercase">culinary newsletters</a>
                 <a href="#consultation" class="text-sm font-semibold text-primary hover:text-accent relative py-2 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent hover:after:w-full after:transition-all after:duration-300 lowercase">contact</a>
             </div>
 
@@ -176,7 +188,9 @@
         <!-- Mobile Drawer menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-creamBg border-t border-borderWarm px-6 py-4 flex flex-col space-y-4">
             <a onclick="toggleMobileMenu()" href="#about" class="text-base font-semibold text-primary hover:text-accent lowercase">about</a>
-            <a onclick="toggleMobileMenu()" href="#kitchen-lab" class="text-base font-semibold text-primary hover:text-accent lowercase">kitchen lab</a>
+            <a onclick="toggleMobileMenu()" href="#meal-prep" class="text-base font-semibold text-primary hover:text-accent lowercase">meal plan & prep</a>
+            <a onclick="toggleMobileMenu()" href="#recipes" class="text-base font-semibold text-primary hover:text-accent lowercase">recipes & cooking tips</a>
+            <a onclick="toggleMobileMenu()" href="#newsletters" class="text-base font-semibold text-primary hover:text-accent lowercase">culinary newsletters</a>
             <a onclick="toggleMobileMenu()" href="#consultation" class="text-base font-semibold text-primary hover:text-accent lowercase">contact</a>
         </div>
     </nav>
@@ -189,7 +203,7 @@
         </h2>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <!-- Left Side: Profile Image with Decorative Layer (Using the 408 logo as requested) -->
+            <!-- Left Side: Profile Image with Decorative Layer (Using requested brand avatar) -->
             <div class="lg:col-span-5 relative group">
                 <div class="absolute top-4 left-[-16px] right-4 bottom-[-16px] border-2 border-accent rounded-xl -z-10 group-hover:top-6 group-hover:left-[-24px] transition-all duration-300"></div>
                 <!-- Display the culinary brand logo inside a premium styling frame -->
@@ -236,128 +250,375 @@
         </div>
     </section>
 
-    <!-- Culinary Kitchen Lab & Scientific Nutrition Section -->
-    <section id="kitchen-lab" class="bg-white py-24 px-6 scroll-mt-10">
+    <!-- Meal Plan & Prep Carousel Section (Inserted before Kitchen Lab) -->
+    <section id="meal-prep" class="py-24 px-6 bg-creamBg scroll-mt-10 overflow-hidden relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-bold text-accent tracking-widest uppercase block mb-2">culinary services</span>
+                    <h2 class="text-3xl font-bold text-primary flex items-center gap-4">
+                        <span>meal plan & prep</span>
+                    </h2>
+                    <p class="text-textMuted text-base mt-2 max-w-xl">
+                        A visual portfolio of custom prepared dishes designed for nutritional density, clinical value, and exquisite world-class flavor.
+                    </p>
+                </div>
+                <div class="flex gap-2 mt-6 md:mt-0">
+                    <button onclick="slidePrev()" class="p-3 bg-white hover:bg-accent hover:text-white text-primary rounded-full shadow-md border border-borderWarm transition-all duration-300" aria-label="Previous Slide">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </button>
+                    <button onclick="slideNext()" class="p-3 bg-white hover:bg-accent hover:text-white text-primary rounded-full shadow-md border border-borderWarm transition-all duration-300" aria-label="Next Slide">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Interactive Slider Showcase wrapper -->
+            <div class="relative group">
+                <div id="dishSlider" class="slider-container flex gap-6 overflow-x-auto py-4 px-1 snap-x snap-mandatory">
+                    
+                    <!-- Slide Item 1 -->
+                    <div class="min-w-[280px] sm:min-w-[340px] md:min-w-[380px] snap-start hover-card-trigger bg-white rounded-2xl overflow-hidden shadow-md border border-borderWarm flex-shrink-0">
+                        <div class="h-64 overflow-hidden relative bg-primary">
+                            <img 
+                                src="https://github.com/buntumalunga/buntumalunga/raw/main/Brown%20Rice%20and%20Oxtail.png" 
+                                alt="Brown Rice and Oxtail" 
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                                onerror="this.src='https://placehold.co/400x300/253850/f7f4eb?text=Brown+Rice+and+Oxtail'"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-accent text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold">slow energy release</span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-lg font-bold text-primary mb-1">brown rice and oxtail</h4>
+                            <p class="text-textMuted text-sm">Complex whole grains combined with tender protein sources for satisfying biochemical synergy.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 2 -->
+                    <div class="min-w-[280px] sm:min-w-[340px] md:min-w-[380px] snap-start hover-card-trigger bg-white rounded-2xl overflow-hidden shadow-md border border-borderWarm flex-shrink-0">
+                        <div class="h-64 overflow-hidden relative bg-primary">
+                            <img 
+                                src="https://github.com/buntumalunga/buntumalunga/raw/main/Chicken%20Brown%20Fried%20Rice.png" 
+                                alt="Chicken Brown Fried Rice" 
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                                onerror="this.src='https://placehold.co/400x300/253850/f7f4eb?text=Chicken+Brown+Fried+Rice'"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-accent text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold">high protein</span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-lg font-bold text-primary mb-1">chicken brown fried rice</h4>
+                            <p class="text-textMuted text-sm">A nutrient-dense adaptation of an Asian classic, reducing glycemic impacts using active cooking science.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 3 -->
+                    <div class="min-w-[280px] sm:min-w-[340px] md:min-w-[380px] snap-start hover-card-trigger bg-white rounded-2xl overflow-hidden shadow-md border border-borderWarm flex-shrink-0">
+                        <div class="h-64 overflow-hidden relative bg-primary">
+                            <img 
+                                src="https://github.com/buntumalunga/buntumalunga/raw/main/Chicken%20Burrito%20Bowl.png" 
+                                alt="Chicken Burrito Bowl" 
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                                onerror="this.src='https://placehold.co/400x300/253850/f7f4eb?text=Chicken+Burrito+Bowl'"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-accent text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold">micronutrient dense</span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-lg font-bold text-primary mb-1">chicken burrito bowl</h4>
+                            <p class="text-textMuted text-sm">Vibrant antioxidants, dynamic prebiotic fibers, and clean lean poultry assembled systematically.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 4 -->
+                    <div class="min-w-[280px] sm:min-w-[340px] md:min-w-[380px] snap-start hover-card-trigger bg-white rounded-2xl overflow-hidden shadow-md border border-borderWarm flex-shrink-0">
+                        <div class="h-64 overflow-hidden relative bg-primary">
+                            <img 
+                                src="https://github.com/buntumalunga/buntumalunga/raw/main/Couscous%20and%20Hake%20Fillet.png" 
+                                alt="Couscous and Hake Fillet" 
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                                onerror="this.src='https://placehold.co/400x300/253850/f7f4eb?text=Couscous+and+Hake+Fillet'"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-accent text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold">omega-3 support</span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-lg font-bold text-primary mb-1">couscous and hake fillet</h4>
+                            <p class="text-textMuted text-sm">Delicate steamed couscous paired with light, anti-inflammatory clean ocean hake fillets.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 5 -->
+                    <div class="min-w-[280px] sm:min-w-[340px] md:min-w-[380px] snap-start hover-card-trigger bg-white rounded-2xl overflow-hidden shadow-md border border-borderWarm flex-shrink-0">
+                        <div class="h-64 overflow-hidden relative bg-primary">
+                            <img 
+                                src="https://github.com/buntumalunga/buntumalunga/raw/main/Meal%20Prep%20for%20a%20family.png" 
+                                alt="Meal Prep for a Family" 
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                                onerror="this.src='https://placehold.co/400x300/253850/f7f4eb?text=Meal+Prep+for+a+Family'"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-accent text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold">batch cooking</span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-lg font-bold text-primary mb-1">meal prep for a family</h4>
+                            <p class="text-textMuted text-sm">Systematic and balanced batch cooking setups targeting nutritional preservation for households.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 6 -->
+                    <div class="min-w-[280px] sm:min-w-[340px] md:min-w-[380px] snap-start hover-card-trigger bg-white rounded-2xl overflow-hidden shadow-md border border-borderWarm flex-shrink-0">
+                        <div class="h-64 overflow-hidden relative bg-primary">
+                            <img 
+                                src="https://github.com/buntumalunga/buntumalunga/raw/main/Mediterranean%20Herb%20and%20Lemon%20Baked%20Hake%20Fish%20Salad.png" 
+                                alt="Mediterranean Fish Salad" 
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                                onerror="this.src='https://placehold.co/400x300/253850/f7f4eb?text=Mediterranean+Fish+Salad'"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-accent text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold">antioxidant rich</span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-lg font-bold text-primary mb-1">mediterranean herb and hake salad</h4>
+                            <p class="text-textMuted text-sm">Packed with zesty phytosterols, cardiac-healthy fats, and clean thermodynamic proteins.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Dots indicator layout -->
+                <div class="flex justify-center gap-2 mt-6">
+                    <span class="slider-dot w-2.5 h-2.5 rounded-full bg-primary cursor-pointer transition-all duration-300" onclick="goToSlide(0)"></span>
+                    <span class="slider-dot w-2.5 h-2.5 rounded-full bg-borderWarm cursor-pointer transition-all duration-300" onclick="goToSlide(1)"></span>
+                    <span class="slider-dot w-2.5 h-2.5 rounded-full bg-borderWarm cursor-pointer transition-all duration-300" onclick="goToSlide(2)"></span>
+                    <span class="slider-dot w-2.5 h-2.5 rounded-full bg-borderWarm cursor-pointer transition-all duration-300" onclick="goToSlide(3)"></span>
+                    <span class="slider-dot w-2.5 h-2.5 rounded-full bg-borderWarm cursor-pointer transition-all duration-300" onclick="goToSlide(4)"></span>
+                    <span class="slider-dot w-2.5 h-2.5 rounded-full bg-borderWarm cursor-pointer transition-all duration-300" onclick="goToSlide(5)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culinary Kitchen Lab / Recipes & Cooking Tips Section -->
+    <section id="recipes" class="bg-white py-24 px-6 scroll-mt-10">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl font-bold text-primary mb-4 flex items-center gap-4">
-                <span>kitchen lab & scientific nutrition</span>
+                <span>recipes & cooking tips</span>
                 <span class="flex-grow h-[1px] bg-borderWarm"></span>
             </h2>
             <p class="text-textMuted text-base mb-12 max-w-2xl leading-relaxed">
-                Explore empirical recipe blueprints from 408°F and critical biostatistics-backed newsletters explaining culinary biochemistry.
+                Empirical recipe blueprints from 408°F showcasing practical cooking secrets. Click on any card below to watch detailed walkthrough steps directly on Instagram.
             </p>
 
-            <!-- Grid: Left side Recipes, Right side Newsletters -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Instagram Grid: Showcase of 6 recipes exactly as requested -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Left: Recipes Showcase with toggleable details -->
-                <div class="space-y-6">
-                    <div class="flex items-center gap-2 text-accent mb-2">
-                        <i data-lucide="chef-hat" class="w-6 h-6"></i>
-                        <h3 class="text-xl font-bold text-primary">lab-tested therapeutic recipes</h3>
-                    </div>
-                    
-                    <!-- Recipe Item 1 -->
-                    <div class="border border-borderWarm rounded-xl p-6 bg-creamBg/30 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <span class="text-[10px] font-bold text-accent uppercase tracking-widest block">glycemic control Blueprint</span>
-                                <h4 class="text-lg font-bold text-primary">slow-fermented sourdough sorghum flatbread</h4>
-                            </div>
-                            <span class="text-xs font-medium text-primary bg-primary/5 px-2 py-1 rounded">slow carb</span>
+                <!-- Recipe 1 -->
+                <a href="https://www.instagram.com/reel/DIMPUvvIuFs/?igsh=eGF1M2ZuOWptZnVz" target="_blank" class="block border border-borderWarm rounded-xl p-6 bg-creamBg/30 hover-card-trigger space-y-4 group">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-bold text-accent uppercase tracking-widest block mb-1">culinary chemistry</span>
+                            <h4 class="text-lg font-bold text-primary group-hover:text-accent transition-colors">how to get a perfectly roasted pumpkin</h4>
                         </div>
-                        <p class="text-textMuted text-sm">
-                            Utilizes lactic acid fermentation pathways to pre-digest resistant starches, significantly blunting glycemic spikes in pre-diabetic therapeutic diets.
-                        </p>
-                        <!-- Collapsible science panel -->
-                        <details class="group border-t border-borderWarm/60 pt-3">
-                            <summary class="list-none flex justify-between items-center text-xs font-bold text-primary cursor-pointer hover:text-accent select-none">
-                                <span>view biochemical composition</span>
-                                <i data-lucide="plus" class="w-3.5 h-3.5 transition-transform group-open:rotate-45"></i>
-                            </summary>
-                            <div class="text-xs text-textMuted mt-3 space-y-2 bg-white p-3 rounded border border-borderWarm/40">
-                                <p><strong>polyphenol retention:</strong> Sorghum retains robust antioxidant density, acting as an aldose reductase inhibitor.</p>
-                                <p><strong>enzymatic step:</strong> 18-hour wild lactobacillus digest cycle at precisely 72°F reduces phytate blockades.</p>
-                            </div>
-                        </details>
+                        <span class="p-2 bg-accent/10 rounded text-accent flex items-center justify-center">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </span>
                     </div>
+                    <p class="text-textMuted text-sm">
+                        Mastering dry heat and oil distributions to maximize caramelization and nutrient density retention of local gourds.
+                    </p>
+                    <div class="flex items-center text-xs font-semibold text-primary pt-2 group-hover:underline">
+                        watch reel recipe <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 ml-1"></i>
+                    </div>
+                </a>
 
-                    <!-- Recipe Item 2 (Placeholder Template) -->
-                    <div class="border border-borderWarm rounded-xl p-6 bg-creamBg/30 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <span class="text-[10px] font-bold text-accent uppercase tracking-widest block">cardioprotective biochemical outline</span>
-                                <h4 class="text-lg font-bold text-primary">emulsified clinical-grade olive oil dressing</h4>
-                            </div>
-                            <span class="text-xs font-medium text-primary bg-primary/5 px-2 py-1 rounded">lipids template</span>
+                <!-- Recipe 2 -->
+                <a href="https://www.instagram.com/reel/DRB3SBzDN6G/?igsh=cmF4bXplY2I4ZGVx" target="_blank" class="block border border-borderWarm rounded-xl p-6 bg-creamBg/30 hover-card-trigger space-y-4 group">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-bold text-accent uppercase tracking-widest block mb-1">cultural grains</span>
+                            <h4 class="text-lg font-bold text-primary group-hover:text-accent transition-colors">3 ways to enjoy your zviyo porridge</h4>
                         </div>
-                        <p class="text-textMuted text-sm">
-                            An emulsion technique protecting bioactive monounsaturated fatty acids (MUFAs) using raw, antioxidant-rich botanical surfactants to maximize absorption.
-                        </p>
-                        <details class="group border-t border-borderWarm/60 pt-3">
-                            <summary class="list-none flex justify-between items-center text-xs font-bold text-primary cursor-pointer hover:text-accent select-none">
-                                <span>view chemical metrics</span>
-                                <i data-lucide="plus" class="w-3.5 h-3.5 transition-transform group-open:rotate-45"></i>
-                            </summary>
-                            <div class="text-xs text-textMuted mt-3 space-y-2 bg-white p-3 rounded border border-borderWarm/40">
-                                <p><strong>temp ceiling:</strong> Emulsified strictly below 104°F (40°C) to prevent polyphenol molecular fragmentation.</p>
-                                <p><strong>stability indices:</strong> Synergistic binding utilizing natural mucilage to extend radical clearance rate.</p>
-                            </div>
-                        </details>
+                        <span class="p-2 bg-accent/10 rounded text-accent flex items-center justify-center">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </span>
                     </div>
+                    <p class="text-textMuted text-sm">
+                        Converting traditional finger millet into flavor-filled, iron-rich energetic options optimized for prebiotic nourishment.
+                    </p>
+                    <div class="flex items-center text-xs font-semibold text-primary pt-2 group-hover:underline">
+                        watch reel recipe <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 ml-1"></i>
+                    </div>
+                </a>
 
-                    <!-- Recipe Item 3 (Upcoming/Placeholder) -->
-                    <div class="border border-dashed border-borderWarm rounded-xl p-6 flex flex-col justify-center items-center text-center h-32">
-                        <i data-lucide="plus-circle" class="w-8 h-8 text-textMuted/40 mb-2"></i>
-                        <p class="text-sm font-bold text-primary">subsequent recipes</p>
-                        <p class="text-xs text-textMuted">Links and nutritional reports will be uploaded as culinary studies conclude.</p>
+                <!-- Recipe 3 -->
+                <a href="https://www.instagram.com/reel/DREdN4BjLUx/?igsh=MTFjZG1sdjI2a3JoZg==" target="_blank" class="block border border-borderWarm rounded-xl p-6 bg-creamBg/30 hover-card-trigger space-y-4 group">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-bold text-accent uppercase tracking-widest block mb-1">macro balance</span>
+                            <h4 class="text-lg font-bold text-primary group-hover:text-accent transition-colors">veg bake</h4>
+                        </div>
+                        <span class="p-2 bg-accent/10 rounded text-accent flex items-center justify-center">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </span>
+                    </div>
+                    <p class="text-textMuted text-sm">
+                        Combining colorful antioxidants, beta carotenes, and fibers into a simple baked therapeutic sheet tray meal.
+                    </p>
+                    <div class="flex items-center text-xs font-semibold text-primary pt-2 group-hover:underline">
+                        watch reel recipe <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 ml-1"></i>
+                    </div>
+                </a>
+
+                <!-- Recipe 4 -->
+                <a href="https://www.instagram.com/reel/DQ1tDVdDMjQ/?igsh=bmpteGg3cWw5djls" target="_blank" class="block border border-borderWarm rounded-xl p-6 bg-creamBg/30 hover-card-trigger space-y-4 group">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-bold text-accent uppercase tracking-widest block mb-1">phytonutrient spotlight</span>
+                            <h4 class="text-lg font-bold text-primary group-hover:text-accent transition-colors">sauteed beet greens</h4>
+                        </div>
+                        <span class="p-2 bg-accent/10 rounded text-accent flex items-center justify-center">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </span>
+                    </div>
+                    <p class="text-textMuted text-sm">
+                        Quick pan tossing method that guards folate levels and retains structural fiber while diminishing bitter oxalic barriers.
+                    </p>
+                    <div class="flex items-center text-xs font-semibold text-primary pt-2 group-hover:underline">
+                        watch reel recipe <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 ml-1"></i>
+                    </div>
+                </a>
+
+                <!-- Recipe 5 -->
+                <a href="https://www.instagram.com/reel/DSmoA4TDDYi/?igsh=NG5lcjVlN2l3dXE4" target="_blank" class="block border border-borderWarm rounded-xl p-6 bg-creamBg/30 hover-card-trigger space-y-4 group">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-bold text-accent uppercase tracking-widest block mb-1">thermal control</span>
+                            <h4 class="text-lg font-bold text-primary group-hover:text-accent transition-colors">roast chicken</h4>
+                        </div>
+                        <span class="p-2 bg-accent/10 rounded text-accent flex items-center justify-center">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </span>
+                    </div>
+                    <p class="text-textMuted text-sm">
+                        The ideal structural roast process keeping bird muscle proteins juicy, succulent, and safe at professional laboratory temps.
+                    </p>
+                    <div class="flex items-center text-xs font-semibold text-primary pt-2 group-hover:underline">
+                        watch reel recipe <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 ml-1"></i>
+                    </div>
+                </a>
+
+                <!-- Recipe 6 -->
+                <a href="https://www.instagram.com/reel/DT2csQiDCkF/?igsh=ZzllY3gxMmUycGFo" target="_blank" class="block border border-borderWarm rounded-xl p-6 bg-creamBg/30 hover-card-trigger space-y-4 group">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-bold text-accent uppercase tracking-widest block mb-1">plant protein</span>
+                            <h4 class="text-lg font-bold text-primary group-hover:text-accent transition-colors">cooking sugar beans</h4>
+                        </div>
+                        <span class="p-2 bg-accent/10 rounded text-accent flex items-center justify-center">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </span>
+                    </div>
+                    <p class="text-textMuted text-sm">
+                        Unlocking optimal leguminous properties with step-by-step water boiling dynamics for soft digestive comfort.
+                    </p>
+                    <div class="flex items-center text-xs font-semibold text-primary pt-2 group-hover:underline">
+                        watch reel recipe <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 ml-1"></i>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Culinary Nutrition Newsletters Section -->
+    <section id="newsletters" class="bg-creamBg py-24 px-6 scroll-mt-10">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-primary mb-4 flex items-center gap-4">
+                <span>culinary nutrition newsletters</span>
+                <span class="flex-grow h-[1px] bg-borderWarm"></span>
+            </h2>
+            <p class="text-textMuted text-base mb-12 max-w-2xl leading-relaxed">
+                Biochemistry briefs and nutrient-retention guidelines outlining scientific approaches to health in the kitchen.
+            </p>
+
+            <!-- Grid Layout of PDF Newsletters -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- PDF Newsletter Card 1 -->
+                <div class="border border-borderWarm rounded-xl p-6 bg-white space-y-4 relative overflow-hidden group hover-card-trigger">
+                    <div class="absolute right-0 top-0 h-full w-1.5 bg-accent"></div>
+                    <div class="flex justify-between items-start">
+                        <span class="text-[10px] font-bold text-accent tracking-widest block uppercase">clinical balance • nhlbi framework</span>
+                        <span class="bg-primary/5 text-primary text-[10px] uppercase tracking-widest px-2 py-1 rounded font-bold">PDF guide</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-primary group-hover:text-accent transition-colors">Healthy Eating Framework</h4>
+                    <p class="text-textMuted text-sm leading-relaxed">
+                        this is your guide for building a balanced plate, adapted from NHLBI. Learn the nutritional percentages to systematically build plates that naturally defend bodily systems.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-borderWarm/50">
+                        <span class="text-xs text-textMuted">Format: Clinical PDF Map</span>
+                        <a href="https://github.com/buntumalunga/buntumalunga/raw/main/Healthy%20Eating%20Plate%20Guide%20.pdf" target="_blank" class="flex items-center gap-1 text-xs font-bold text-primary hover:text-accent group-hover:underline">
+                            access pdf guide <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Right: Scientific Newsletters (Key Concepts) -->
-                <div class="space-y-6">
-                    <div class="flex items-center gap-2 text-accent mb-2">
-                        <i data-lucide="scroll" class="w-6 h-6"></i>
-                        <h3 class="text-xl font-bold text-primary">the molecular nutrition newsletter</h3>
+                <!-- PDF Newsletter Card 2 -->
+                <div class="border border-borderWarm rounded-xl p-6 bg-white space-y-4 relative overflow-hidden group hover-card-trigger">
+                    <div class="absolute right-0 top-0 h-full w-1.5 bg-accent"></div>
+                    <div class="flex justify-between items-start">
+                        <span class="text-[10px] font-bold text-accent tracking-widest block uppercase">kitchen execution • efficiency</span>
+                        <span class="bg-primary/5 text-primary text-[10px] uppercase tracking-widest px-2 py-1 rounded font-bold">PDF manual</span>
                     </div>
-
-                    <!-- Newsletter 1 -->
-                    <div class="border border-borderWarm rounded-xl p-6 bg-cardBg space-y-3 relative overflow-hidden group">
-                        <div class="absolute right-0 top-0 h-full w-1 bg-accent"></div>
-                        <span class="text-[10px] font-bold text-accent tracking-widest block uppercase">issue #11 • clinical trial review</span>
-                        <h4 class="text-lg font-bold text-primary group-hover:text-accent transition-colors">the biochemistry of fermentation in diabetes care</h4>
-                        <p class="text-textMuted text-sm leading-relaxed">
-                            Breaking down modern dietary clinical literature tracking the metabolic outcomes of consuming ancestral grains prepared via biochemical fermentation techniques.
-                        </p>
-                        <div class="flex items-center justify-between pt-2 border-t border-borderWarm/50">
-                            <span class="text-xs text-textMuted">Read duration: 6 mins</span>
-                            <span class="text-xs font-bold text-primary group-hover:underline cursor-pointer flex items-center gap-1">
-                                read issue <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-                            </span>
-                        </div>
+                    <h4 class="text-lg font-bold text-primary group-hover:text-accent transition-colors">The Ultimate Meal Prep Guide</h4>
+                    <p class="text-textMuted text-sm leading-relaxed">
+                        simple steps in cooking and preparing a week’s worth of meals. Explore batch preservation dynamics, food storage temperature rules, and visual plating designs.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-borderWarm/50">
+                        <span class="text-xs text-textMuted">Format: Culinary Blueprint</span>
+                        <a href="https://github.com/buntumalunga/buntumalunga/raw/main/The%20Ultimate%20Meal%20Prep%20Guide.pdf" target="_blank" class="flex items-center gap-1 text-xs font-bold text-primary hover:text-accent group-hover:underline">
+                            access pdf guide <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </a>
                     </div>
+                </div>
 
-                    <!-- Newsletter 2 -->
-                    <div class="border border-borderWarm rounded-xl p-6 bg-cardBg space-y-3 relative overflow-hidden group">
-                        <div class="absolute right-0 top-0 h-full w-1 bg-accent"></div>
-                        <span class="text-[10px] font-bold text-accent tracking-widest block uppercase">issue #12 • nutritional biochemistry</span>
-                        <h4 class="text-lg font-bold text-primary group-hover:text-accent transition-colors">thermal degradation thresholds of water-soluble vitamins</h4>
-                        <p class="text-textMuted text-sm leading-relaxed">
-                            Why cooking temperatures determine therapeutic retention. Presenting heat/time curves for critical heat-sensitive B-vitamins and vitamin C.
-                        </p>
-                        <div class="flex items-center justify-between pt-2 border-t border-borderWarm/50">
-                            <span class="text-xs text-textMuted">Read duration: 4 mins</span>
-                            <span class="text-xs font-bold text-primary group-hover:underline cursor-pointer flex items-center gap-1">
-                                read issue <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-                            </span>
-                        </div>
+                <!-- PDF Newsletter Card 3 -->
+                <div class="border border-borderWarm rounded-xl p-6 bg-white space-y-4 relative overflow-hidden group hover-card-trigger">
+                    <div class="absolute right-0 top-0 h-full w-1.5 bg-accent"></div>
+                    <div class="flex justify-between items-start">
+                        <span class="text-[10px] font-bold text-accent tracking-widest block uppercase">nutrient optimization • visuals</span>
+                        <span class="bg-primary/5 text-primary text-[10px] uppercase tracking-widest px-2 py-1 rounded font-bold">PDF diagram</span>
                     </div>
+                    <h4 class="text-lg font-bold text-primary group-hover:text-accent transition-colors">Quick Guide - Building a Nutrient-Dense Plate</h4>
+                    <p class="text-textMuted text-sm leading-relaxed">
+                        a visual guide with examples on how to build a nutrient dense plate. Provides real-world ingredient alternatives that minimize chronic glucose spikes.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-borderWarm/50">
+                        <span class="text-xs text-textMuted">Format: Plating Chart</span>
+                        <a href="https://github.com/buntumalunga/buntumalunga/raw/main/Quick%20Guide%20-%20Building%20a%20Nutrient-Dense%20Plate.pdf" target="_blank" class="flex items-center gap-1 text-xs font-bold text-primary hover:text-accent group-hover:underline">
+                            access pdf guide <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
 
-                    <!-- Newsletter Placeholder -->
-                    <div class="border border-dashed border-borderWarm rounded-xl p-6 flex flex-col justify-center items-center text-center h-32">
-                        <i data-lucide="mail" class="w-8 h-8 text-textMuted/40 mb-2"></i>
-                        <p class="text-sm font-bold text-primary">subscribe to scientific briefs</p>
-                        <p class="text-xs text-textMuted">Get biochemical reviews and laboratory recipe templates in your inbox.</p>
+                <!-- PDF Newsletter Card 4 -->
+                <div class="border border-borderWarm rounded-xl p-6 bg-white space-y-4 relative overflow-hidden group hover-card-trigger">
+                    <div class="absolute right-0 top-0 h-full w-1.5 bg-accent"></div>
+                    <div class="flex justify-between items-start">
+                        <span class="text-[10px] font-bold text-accent tracking-widest block uppercase">biophysics • thermal kinetics</span>
+                        <span class="bg-primary/5 text-primary text-[10px] uppercase tracking-widest px-2 py-1 rounded font-bold">PDF monograph</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-primary group-hover:text-accent transition-colors">Cooking Methods - Flavour, Nutrition and Science of Heat</h4>
+                    <p class="text-textMuted text-sm leading-relaxed">
+                        Cooking is fundamentally a series of controlled chemical and physical reactions. When heat is applied to food, several processes occur simultaneously: protein denaturing, cell wall degradation, and vitamin retention factors.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-borderWarm/50">
+                        <span class="text-xs text-textMuted">Format: Thermodynamic Analysis</span>
+                        <a href="https://github.com/buntumalunga/buntumalunga/raw/main/Cooking%20Methods%20%E2%80%94%20Flavour%2C%20Nutrition%2C%20and%20the%20Science%20of%20Heat.pdf" target="_blank" class="flex items-center gap-1 text-xs font-bold text-primary hover:text-accent group-hover:underline">
+                            access pdf guide <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -449,53 +710,96 @@
                             <i data-lucide="youtube" class="w-4 h-4 text-accent"></i>
                             <span>youtube</span>
                         </a>
-
-                        <!-- GitHub -->
-                        <a href="https://github.com/buntumalunga" target="_blank" class="flex items-center gap-2.5 px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg hover:border-accent hover:bg-white/10 transition-all text-xs font-semibold lowercase">
-                            <i data-lucide="github" class="w-4 h-4 text-accent"></i>
-                            <span>github</span>
-                        </a>
                     </div>
                 </div>
+
             </div>
 
-            <!-- Footer copyright note -->
-            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-creamBg/60">
-                <p class="lowercase">© 2026 buntubethu sydney malunga • all rights reserved</p>
-                <div class="flex gap-6 lowercase">
-                    <a href="#about" class="hover:text-accent transition-colors">about</a>
-                    <a href="#kitchen-lab" class="hover:text-accent transition-colors">kitchen lab</a>
-                    <a href="#consultation" class="hover:text-accent transition-colors">consultation</a>
-                </div>
+            <!-- Footer copyright bottom -->
+            <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-creamBg/50 gap-4">
+                <p>&copy; 2026 408°F Culinary Nutrition. All rights reserved.</p>
+                <p class="lowercase">design integrated with science and health</p>
             </div>
         </div>
     </footer>
 
-    <!-- Script Logic for Responsive Drawer, and Icon Init -->
+    <!-- Scripts & Interactive Functions -->
     <script>
-        // Start Lucide Icons library
+        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Mobile drawer menu logic
+        // Responsive Mobile Menu Drawer Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
-            const icon = document.getElementById('menuIcon');
+            const menuIcon = document.getElementById('menuIcon');
             const isHidden = menu.classList.contains('hidden');
             
             if (isHidden) {
                 menu.classList.remove('hidden');
-                icon.setAttribute('data-lucide', 'x');
+                menuIcon.setAttribute('data-lucide', 'x');
             } else {
                 menu.classList.add('hidden');
-                icon.setAttribute('data-lucide', 'menu');
+                menuIcon.setAttribute('data-lucide', 'menu');
             }
             lucide.createIcons();
         }
 
-        // Ensure proper load logging
-        window.onload = function() {
-            console.log("Kitchen Lab workspace launched beautifully.");
-        };
+        // Meal Prep Slider Functionality
+        const slider = document.getElementById('dishSlider');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        const totalSlides = 6;
+
+        // Automatically slide every 5 seconds
+        let autoSlideTimer = setInterval(slideNext, 5000);
+
+        function updateSliderDots() {
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.remove('bg-borderWarm');
+                    dot.classList.add('bg-primary', 'w-4');
+                } else {
+                    dot.classList.remove('bg-primary', 'w-4');
+                    dot.classList.add('bg-borderWarm');
+                }
+            });
+        }
+
+        function slideNext() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }
+
+        function slidePrev() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            goToSlide(currentSlide);
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            const slideWidth = slider.scrollWidth / totalSlides;
+            slider.scrollTo({
+                left: slideWidth * index,
+                behavior: 'smooth'
+            });
+            updateSliderDots();
+            
+            // Reset timer on manual click
+            clearInterval(autoSlideTimer);
+            autoSlideTimer = setInterval(slideNext, 5000);
+        }
+
+        // Add scroll listener to update dots in case user swipes on mobile
+        slider.addEventListener('scroll', () => {
+            const index = Math.round(slider.scrollLeft / slider.clientWidth);
+            if (index !== currentSlide && index >= 0 && index < totalSlides) {
+                currentSlide = index;
+                updateSliderDots();
+            }
+        });
+
+        // Initialize Slider State
+        updateSliderDots();
     </script>
 </body>
 </html>
